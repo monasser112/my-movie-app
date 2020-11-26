@@ -4,20 +4,32 @@ import axios from "axios";
 import MoviesList from "../Components/MoviesList";
 
 const SearchResults = ({ searchTerm }) => {
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState([]);
+
   const getMoviesResults = async (movieName) => {
     const response = await axios.get(`http://api.themoviedb.org/3/search/movie?
 api_key=b3070a5d3abfb7c241d2688d066914e7&query=<${movieName}>&page=1`);
-    setResults(response.data.results);
+    let filteredMovies = response.data.results.filter(
+      (movie) => movie.title != "Back and Forth"
+    );
+    setResults(filteredMovies);
   };
 
   useEffect(() => {
     getMoviesResults(searchTerm);
   }, [searchTerm]);
 
+  const movienotfoundMessage = <Text>Sorry Movie Not Found</Text>;
+
   return (
     <View>
-      <MoviesList movieslist={results} />
+      {searchTerm.length == 0 ? (
+        <Text>Start Searching</Text>
+      ) : results.length == 0 ? (
+        movienotfoundMessage
+      ) : (
+        <MoviesList movieslist={results} />
+      )}
     </View>
   );
 };
