@@ -32,7 +32,7 @@ api_key=b3070a5d3abfb7c241d2688d066914e7&query=<${movieName}>&page=1`);
   };
 
   return (
-    <View>
+    <View style={{ backgroundColor: "#273746", height: "100%" }}>
       <SearchBar
         searchTerm={searchTerm}
         onTermChange={setSearchTerm}

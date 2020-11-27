@@ -31,10 +31,11 @@ const styles = StyleSheet.create({
     marginTop: 30,
     backgroundColor: "#F0EEEE",
     height: 50,
-    marginHorizontal: 15,
+    marginHorizontal: 10,
     borderRadius: 15,
     flexDirection: "row",
     marginBottom: 10,
+    backgroundColor: "#F5C518",
   },
   inputStyle: {
     flex: 1,

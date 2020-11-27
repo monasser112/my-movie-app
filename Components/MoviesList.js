@@ -10,7 +10,7 @@ import SingleMovie from "./SingleMovie";
 
 const MoviesList = ({ movieslist, navigation }) => {
   return (
-    <View>
+    <View style={{ backgroundColor: "#273746" }}>
       <FlatList
         data={movieslist}
         numColumns={1}

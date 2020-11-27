@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import MoviesList from "../Components/MoviesList";
 
 const SearchResults = ({
@@ -12,12 +12,14 @@ const SearchResults = ({
     getMoviesResults(searchTerm);
   }, [searchTerm]);
 
-  const movienotfoundMessage = <Text>Sorry Movie Not Found</Text>;
+  const movienotfoundMessage = (
+    <Text style={styles.messageFromSearch}>Sorry Movie Not Found</Text>
+  );
 
   return (
     <View>
       {searchTerm.length == 0 ? (
-        <Text>Start Searching</Text>
+        <Text style={styles.messageFromSearch}>Search for a movie !</Text>
       ) : results.length == 0 ? (
         movienotfoundMessage
       ) : (
@@ -26,5 +28,15 @@ const SearchResults = ({
     </View>
   );
 };
+const styles = StyleSheet.create({
+  messageFromSearch: {
+    display: "flex",
+    alignSelf: "center",
+    color: "white",
+    fontWeight: "bold",
+    marginVertical: 50,
+    fontSize: 20,
+  },
+});
 
 export default SearchResults;

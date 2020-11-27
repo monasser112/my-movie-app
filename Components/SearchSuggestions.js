@@ -7,7 +7,11 @@ const SearchSuggestions = ({ recentSearches, getMoviesResults }) => {
     <View>
       {recentSearches.map((recentsearch, i) => {
         return (
-          <ListItem key={i} bottomDivider>
+          <ListItem
+            containerStyle={{ backgroundColor: "#F7DC6F" }}
+            key={i}
+            bottomDivider
+          >
             <ListItem.Content>
               <TouchableOpacity onPress={() => getMoviesResults(recentsearch)}>
                 <ListItem.Title>{recentsearch}</ListItem.Title>
