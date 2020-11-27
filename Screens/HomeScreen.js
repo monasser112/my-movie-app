@@ -9,12 +9,11 @@ const HomeScreen = ({ navigation }) => {
   const [results, setResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [recentSearches, setRecentSearches] = useState([]);
-  const [showRecentResults, setShowRecentResults] = useState(false);
+  const [showRecentResults, setShowRecentResults] = useState(false); //state to toggle search Suggestions Component
 
   const getMoviesResults = async (movieName) => {
     const response = await axios.get(`http://api.themoviedb.org/3/search/movie?
 api_key=b3070a5d3abfb7c241d2688d066914e7&query=<${movieName}>&page=1`);
-
     let filteredMovies = response.data.results.filter(
       (movie) => movie.title != "Back and Forth"
     );
@@ -47,6 +46,7 @@ api_key=b3070a5d3abfb7c241d2688d066914e7&query=<${movieName}>&page=1`);
       ) : null}
       <SearchResults
         getMoviesResults={getMoviesResults}
+        recentSearches={recentSearches}
         results={results}
         searchTerm={searchTerm}
         onTermChange={setSearchTerm}
