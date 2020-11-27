@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
   const getMoviesResults = async (movieName) => {
     const response = await axios.get(`http://api.themoviedb.org/3/search/movie?
 api_key=b3070a5d3abfb7c241d2688d066914e7&query=<${movieName}>&page=1`);
-    console.log(response.data.results);
+
     let filteredMovies = response.data.results.filter(
       (movie) => movie.title != "Back and Forth"
     );
@@ -22,8 +22,10 @@ api_key=b3070a5d3abfb7c241d2688d066914e7&query=<${movieName}>&page=1`);
   };
 
   const AddNewSearch = (searchItem) => {
-    setRecentSearches(recentSearches.concat(searchItem));
-  };
+    recentSearches.indexOf(searchTerm) === -1
+      ? setRecentSearches(recentSearches.concat(searchItem))
+      : setRecentSearches(recentSearches);
+  }; //This Checking in order not to show the same search item more than once.
 
   const ToggleShowRecentResults = (val) => {
     setShowRecentResults(val);

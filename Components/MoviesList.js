@@ -45,9 +45,6 @@ const MoviesList = ({ movieslist, navigation }) => {
 
 const styles = StyleSheet.create({
   singleMovieWrapper: {
-    // flexDirection: "row",
-    // flex: 1,
-    // justifyContent: "space-between",
     marginHorizontal: 10,
     marginVertical: 10,
   },

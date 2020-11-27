@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
-import axios from "axios";
 
 const MovieDetailScreen = ({ route }) => {
   const { movieTitle, releasedate, poster, overview } = route.params;
@@ -15,7 +14,7 @@ const MovieDetailScreen = ({ route }) => {
         <Image
           style={styles.image}
           source={{ uri: `http://image.tmdb.org/t/p/w500${poster}` }}
-          resizeMode="stretch"
+          resizeMode="cover"
         />
         <Text style={{ fontWeight: "bold", fontSize: 20 }}>Overview :</Text>
         <Text style={{ fontSize: 17 }}>{overview}</Text>
