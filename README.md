@@ -28,7 +28,7 @@ Where You can view Details about a Specific Movie once you click on it.
 
 #### Axios
 - Library for making Asynchronous Request to Remote endpoints.
-####r react-native elements
+#### react-native elements
 
 
 
