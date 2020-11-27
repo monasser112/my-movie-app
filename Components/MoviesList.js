@@ -1,8 +1,14 @@
 import React from "react";
-import { Text, View, FlatList, StyleSheet } from "react-native";
+import {
+  Text,
+  View,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import SingleMovie from "./SingleMovie";
 
-const MoviesList = ({ movieslist }) => {
+const MoviesList = ({ movieslist, navigation }) => {
   return (
     <View>
       <FlatList
@@ -11,14 +17,25 @@ const MoviesList = ({ movieslist }) => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => {
           return (
-            <View style={styles.singleMovieWrapper}>
-              <SingleMovie
-                releasedata={item.release_date}
-                movietitle={item.title}
-                poster={item.poster_path}
-                overview={item.overview}
-              />
-            </View>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Details", {
+                  movieTitle: item.title,
+                  releasedate: item.release_date,
+                  poster: item.poster_path,
+                  overview: item.overview,
+                });
+              }}
+            >
+              <View style={styles.singleMovieWrapper}>
+                <SingleMovie
+                  releasedata={item.release_date}
+                  movietitle={item.title}
+                  poster={item.poster_path}
+                  overview={item.overview}
+                />
+              </View>
+            </TouchableOpacity>
           );
         }}
       />

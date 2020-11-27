@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-const SearchBar = ({ searchTerm, onTermChange }) => {
+const SearchBar = ({
+  searchTerm,
+  onTermChange,
+  onAddNewSearch,
+  ToggleShowRecentResults,
+}) => {
   return (
     <View style={styles.backgroundStyle}>
       <Feather style={{ top: 10 }} name="search" size={30} />
@@ -13,7 +18,9 @@ const SearchBar = ({ searchTerm, onTermChange }) => {
         placeholder="Search for a Movie !"
         value={searchTerm}
         onChangeText={onTermChange}
-        onEndEditing={() => console.log("Editing Finished")}
+        onEndEditing={() => onAddNewSearch(searchTerm)}
+        onFocus={() => ToggleShowRecentResults(true)}
+        onBlur={() => ToggleShowRecentResults(false)}
       />
     </View>
   );
